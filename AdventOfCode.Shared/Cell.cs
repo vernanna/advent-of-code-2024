@@ -1,4 +1,4 @@
-namespace Template;
+namespace AdventOfCode.Shared;
 
 public class Cell<T>
 {

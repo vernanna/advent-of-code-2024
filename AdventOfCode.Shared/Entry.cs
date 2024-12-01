@@ -1,4 +1,4 @@
-namespace Template;
+namespace AdventOfCode.Shared;
 
 public class Entry<T>(string Id, T Value)
 {
