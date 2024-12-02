@@ -42,13 +42,12 @@ public static class Input
 
     public static IEnumerable<Entry<TValue>> ReadEntries<TValue>(string idSeparator, Func<string, TValue> valueSelector)
     {
-        var lines = ReadLines().ToList();
-
         return ReadLines()
-        .Select(line =>
-        {
-            var parts = line.Split(idSeparator);
-            return new Entry<TValue>(parts[0], valueSelector(parts[1]));
-        });
+            .Select(
+                line =>
+                {
+                    var parts = line.Split(idSeparator);
+                    return new Entry<TValue>(parts[0], valueSelector(parts[1]));
+                });
     }
 }

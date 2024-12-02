@@ -20,7 +20,7 @@ public class Cell<T>
 
     public IEnumerable<Cell<T>> AdjacentCells(bool includeDiagonals = true)
     {
-        return new Cell<T>?[]{
+        return new[]{
             CellAbove(),
             CellBelow(),
             CellLeft(),
