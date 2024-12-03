@@ -67,4 +67,6 @@ public static class StringExtensions
         var parts = value.Split(separator);
         return (First: parts[0], Second: parts[1]);
     }
+
+    public static string Join(this IEnumerable<string> values, string separator) => string.Join(separator, values);
 }
