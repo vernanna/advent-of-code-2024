@@ -50,4 +50,17 @@ public static class EnumerableExtensions
         source = source.ToList();
         return source.Zip(source.Skip(1), (first, second) => (first, second));
     }
+
+    public static int IndexOf<T>(this IEnumerable<T> source, T element) where T : IEquatable<T>
+    {
+        foreach (var (index, item) in source.Index())
+        {
+            if (EqualityComparer<T>.Default.Equals(item, element))
+            {
+                return index;
+            }
+        }
+
+        return -1;
+    }
 }
