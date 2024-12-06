@@ -7,4 +7,6 @@ public class Character(char Value)
     public int? AsDigit => int.TryParse(Value.ToString(), out var digit) ? digit : null;
 
     public char Value { get; } = Value;
+
+    public override string ToString() => Value.ToString();
 }

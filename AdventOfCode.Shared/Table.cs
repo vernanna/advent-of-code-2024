@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace AdventOfCode.Shared;
 
 public class Table<T>
@@ -9,7 +11,10 @@ public class Table<T>
         cells = values.Map((value, row, column) => new Cell<T>(value, row, column, this));
         NumberOfRows = cells.GetLength(0);
         NumberOfColumns = cells.GetLength(1);
-        Rows = Enumerable.Range(0, NumberOfRows).Select(rowNumber => Enumerable.Range(0, NumberOfColumns).Select(columnNumber => cells[rowNumber, columnNumber])).ToList();
+        Rows = Enumerable.Range(0, NumberOfRows).Select(
+                rowNumber => Enumerable.Range(0, NumberOfColumns)
+                    .Select(columnNumber => cells[rowNumber, columnNumber]))
+            .ToList();
     }
 
     public int NumberOfRows { get; }
@@ -37,9 +42,11 @@ public class Table<T>
                     {
                         yield return group;
                     }
+
                     group.Clear();
                 }
             }
+
             if (group.Count > 0)
             {
                 yield return group;
@@ -48,4 +55,19 @@ public class Table<T>
     }
 
     public Cell<T> this[int row, int column] => cells[row, column];
+
+    public override string ToString()
+    {
+        var stringBuilder = new StringBuilder();
+        for (var row = 0; row < NumberOfRows; row++)
+        {
+            for (var column = 0; column < NumberOfColumns; column++)
+            {
+                stringBuilder.Append(cells[row, column].Value);
+            }
+            stringBuilder.AppendLine();
+        }
+
+        return stringBuilder.ToString();
+    }
 }

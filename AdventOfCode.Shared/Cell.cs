@@ -12,7 +12,7 @@ public class Cell<T>
         this.table = table;
     }
 
-    public T Value { get; }
+    public T Value { get; private set; }
 
     public int Row { get; }
 
@@ -79,6 +79,16 @@ public class Cell<T>
     public IEnumerable<Cell<T>?> CellsRightBelow(int numberOfCells) =>
         Enumerable.Range(1, numberOfCells).Select(CellRightBelow);
 
+    public Cell<T>? CellIn(Direction direction, int stepSize = 1) =>
+        direction switch
+        {
+            Direction.Up => CellAbove(stepSize),
+            Direction.Down => CellBelow(stepSize),
+            Direction.Left => CellLeft(stepSize),
+            Direction.Right => CellRight(stepSize),
+            _ => null
+        };
+
     public Cell<T>? CellWithOffset(int rowOffset, int columnOffset)
     {
         int row = Row + rowOffset;
@@ -92,4 +102,6 @@ public class Cell<T>
                 ? table[row, column]
                 : null;
     }
+
+    public void UpdateValue(T value) => Value = value;
 }
