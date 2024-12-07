@@ -4,7 +4,7 @@ using AdventOfCode.Shared;
 
 var result = Input
     .ReadLines()
-    .Select(line => line.GetNumbers(" ").ToList())
+    .Select(line => line.GetInts(" ").ToList())
     .Count(levels => levels.IsOrdered() && !levels.ContainsDuplicates() && levels.Pairwise().All(pair => Math.Abs(pair.Next - pair.Previous) <= 3));
 
 Console.WriteLine(result);

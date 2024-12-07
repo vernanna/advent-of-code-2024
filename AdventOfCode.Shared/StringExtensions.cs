@@ -59,8 +59,17 @@ public static class StringExtensions
         return null;
     }
 
-    public static IEnumerable<int> GetNumbers(this string value, string separator) =>
-        value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(part => int.Parse(part));
+    public static int GetInt(this string value) => int.Parse(value);
+    public static double GetDouble(this string value) => double.Parse(value);
+
+    public static IEnumerable<int> GetInts(this string value, string separator) =>
+        value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(int.Parse);
+
+    public static IEnumerable<uint> GetUnsignedInts(this string value, string separator) =>
+        value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(uint.Parse);
+
+    public static IEnumerable<double> GetDoubles(this string value, string separator) =>
+        value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(double.Parse);
 
     public static (string First, string Second) SplitAt(this string value, string separator)
     {

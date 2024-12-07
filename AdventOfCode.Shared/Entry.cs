@@ -1,8 +1,8 @@
 namespace AdventOfCode.Shared;
 
-public class Entry<T>(string Id, T Value)
+public class Entry<TId, TValue>(TId id, TValue value)
 {
-    public string Id { get; } = Id.Trim();
+    public TId Id { get; } = id;
 
-    public T Value { get; } = Value;
+    public TValue Value { get; } = value;
 }

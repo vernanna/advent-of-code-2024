@@ -11,7 +11,7 @@ public record Rule(int FirstPageNumber, int SecondPageNumber)
 
     public static Rule Parse(string input)
     {
-        var numbers = input.GetNumbers("|").ToList();
+        var numbers = input.GetInts("|").ToList();
 
         return new Rule(numbers[0], numbers[1]);
     }

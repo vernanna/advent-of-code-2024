@@ -3,7 +3,7 @@
 using AdventOfCode.Shared;
 
 var lines = Input.ReadLines()
-    .Select(line => line.GetNumbers(" ").ToList())
+    .Select(line => line.GetInts(" ").ToList())
     .Select(numbersPerLine => (First: numbersPerLine[0], Second: numbersPerLine[1]))
     .ToList();
 

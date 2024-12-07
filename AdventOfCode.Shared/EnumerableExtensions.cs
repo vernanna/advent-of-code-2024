@@ -63,4 +63,12 @@ public static class EnumerableExtensions
 
         return -1;
     }
+
+    public static IEnumerable<IEnumerable<T>> GetPermutations<T>(this IEnumerable<T> source, int length)
+    {
+        source = source.ToList();
+        return length == 1
+            ? source.Select(item => new[] { item })
+            : GetPermutations(source, length - 1).SelectMany(permutation => source.Select(permutation.Append));
+    }
 }

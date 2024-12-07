@@ -1,22 +1,12 @@
 namespace AdventOfCode.Shared;
 
-public class Cell<T>
+public class Cell<T>(T value, int row, int column, Table<T> table)
 {
-    private readonly Table<T> table;
+    public T Value { get; private set; } = value;
 
-    public Cell(T value, int row, int column, Table<T> table)
-    {
-        Value = value;
-        Row = row;
-        Column = column;
-        this.table = table;
-    }
+    public int Row { get; } = row;
 
-    public T Value { get; private set; }
-
-    public int Row { get; }
-
-    public int Column { get; }
+    public int Column { get; } = column;
 
     public IEnumerable<Cell<T>> AdjacentCells(bool includeDiagonals = true)
     {

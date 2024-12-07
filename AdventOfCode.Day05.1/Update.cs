@@ -8,7 +8,7 @@ public record Update(IReadOnlyCollection<int> PageNumbers)
 
     public static Update Parse(string input)
     {
-        var numbers = input.GetNumbers(",").ToList();
+        var numbers = input.GetInts(",").ToList();
 
         return new Update(numbers);
     }

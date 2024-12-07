@@ -4,7 +4,7 @@ using AdventOfCode.Shared;
 
 var result = Input
     .ReadLines()
-    .Select(line => line.GetNumbers(" ").ToList())
+    .Select(line => line.GetInts(" ").ToList())
     .Count(
         levels => levels.Select(
                 (_, index) =>

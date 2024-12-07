@@ -40,14 +40,12 @@ public static class Input
         return new Table<TResult>(array);
     }
 
-    public static IEnumerable<Entry<TValue>> ReadEntries<TValue>(string idSeparator, Func<string, TValue> valueSelector)
-    {
-        return ReadLines()
+    public static IEnumerable<Entry<TId, TValue>> ReadEntries<TId, TValue>(string idSeparator, Func<string, TId> idSelector, Func<string, TValue> valueSelector) =>
+        ReadLines()
             .Select(
                 line =>
                 {
                     var parts = line.Split(idSeparator);
-                    return new Entry<TValue>(parts[0], valueSelector(parts[1]));
+                    return new Entry<TId, TValue>(idSelector(parts[0]), valueSelector(parts[1]));
                 });
-    }
 }
