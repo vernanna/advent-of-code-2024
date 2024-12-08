@@ -8,6 +8,10 @@ public class Cell<T>(T value, int row, int column, Table<T> table)
 
     public int Column { get; } = column;
 
+    public bool IsInSameRow(Cell<T> other) => Row == other.Row;
+
+    public bool IsInSameColumn(Cell<T> other) => Column == other.Column;
+
     public IEnumerable<Cell<T>> AdjacentCells(bool includeDiagonals = true)
     {
         return new[]

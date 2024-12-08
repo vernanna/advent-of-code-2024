@@ -71,4 +71,10 @@ public static class EnumerableExtensions
             ? source.Select(item => new[] { item })
             : GetPermutations(source, length - 1).SelectMany(permutation => source.Select(permutation.Append));
     }
+
+    public static IEnumerable<(T First, T Second)> UniquePairs<T>(this IEnumerable<T> source)
+    {
+        source = source.ToList();
+        return source.SelectMany((_, index) => source.Skip(index + 1), (first, second) => (item1: first, item2: second));
+    }
 }
