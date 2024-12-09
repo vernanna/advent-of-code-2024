@@ -75,6 +75,21 @@ public static class EnumerableExtensions
     public static IEnumerable<(T First, T Second)> UniquePairs<T>(this IEnumerable<T> source)
     {
         source = source.ToList();
-        return source.SelectMany((_, index) => source.Skip(index + 1), (first, second) => (item1: first, item2: second));
+        return source.SelectMany(
+            (_, index) => source.Skip(index + 1),
+            (first, second) => (item1: first, item2: second));
+    }
+
+    public static int FindIndex<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+    {
+        foreach (var itemAndIndex in source.Index())
+        {
+            if (predicate(itemAndIndex.Item))
+            {
+                return itemAndIndex.Index;
+            }
+        }
+
+        return -1;
     }
 }
