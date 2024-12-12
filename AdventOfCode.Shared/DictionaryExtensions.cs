@@ -9,7 +9,7 @@ public static class DictionaryExtensions
                 value = valueFactory(key);
                 dictionary[key] = value;
             }
-    
+
             return value;
         }
 }

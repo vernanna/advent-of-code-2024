@@ -8,6 +8,8 @@ public class Cell<T>(T value, int row, int column, Table<T> table)
 
     public int Column { get; } = column;
 
+    public IEnumerable<CellCorner<T>> Corners => CellCorner<T>.Create(this);
+
     public bool IsInSameRow(Cell<T> other) => Row == other.Row;
 
     public bool IsInSameColumn(Cell<T> other) => Column == other.Column;

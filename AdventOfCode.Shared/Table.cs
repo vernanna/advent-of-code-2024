@@ -102,6 +102,48 @@ public class Table<T>
         return cellsInLine;
     }
 
+    public IEnumerable<TableGroup<T>> GetConnectedGroups()
+    {
+        var groups = new List<TableGroup<T>>();
+        var visitedCells = new HashSet<Cell<T>>();
+
+        foreach (var cell in Cells)
+        {
+            if (visitedCells.Contains(cell))
+            {
+                continue;
+            }
+
+            var cellsInGroup = new HashSet<Cell<T>>();
+            var uncheckedCellsInGroup = new Queue<Cell<T>>();
+            uncheckedCellsInGroup.Enqueue(cell);
+
+            while (uncheckedCellsInGroup.Count > 0)
+            {
+                var current = uncheckedCellsInGroup.Dequeue();
+
+                if (!visitedCells.Add(current))
+                {
+                    continue;
+                }
+
+                cellsInGroup.Add(current);
+
+                foreach (var adjacentCell in current.AdjacentCells(false))
+                {
+                    if (!visitedCells.Contains(adjacentCell) && EqualityComparer<T>.Default.Equals(adjacentCell.Value, cell.Value))
+                    {
+                        uncheckedCellsInGroup.Enqueue(adjacentCell);
+                    }
+                }
+            }
+
+            groups.Add(new TableGroup<T>(cellsInGroup.ToList()));
+        }
+
+        return groups;
+    }
+
     public Cell<T> this[int row, int column] => cells[row, column];
 
     public override string ToString()
@@ -113,6 +155,7 @@ public class Table<T>
             {
                 stringBuilder.Append(cells[row, column].Value);
             }
+
             stringBuilder.AppendLine();
         }
 
