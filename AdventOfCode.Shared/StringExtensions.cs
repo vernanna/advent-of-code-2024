@@ -68,6 +68,9 @@ public static class StringExtensions
     public static IEnumerable<uint> GetUnsignedInts(this string value, string separator) =>
         value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(uint.Parse);
 
+    public static IEnumerable<long> GetLongs(this string value, string separator) =>
+        value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(long.Parse);
+
     public static IEnumerable<double> GetDoubles(this string value, string separator) =>
         value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(double.Parse);
 
