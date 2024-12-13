@@ -1,4 +1,4 @@
-﻿using AdventOfCode.Shared;
+﻿using AdventOfCode.Shared.Extensions;
 
 namespace AdventOfCode.Day07._1;
 
@@ -30,7 +30,7 @@ public class TestValueSet(List<double> values)
 
     public static TestValueSet Create(string input)
     {
-        var values = input.GetDoubles(" ").ToList();
+        var values = input.GetDoubles().ToList();
 
         return new TestValueSet(values);
     }

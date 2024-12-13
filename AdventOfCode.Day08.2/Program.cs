@@ -1,4 +1,5 @@
 ﻿using AdventOfCode.Shared;
+using AdventOfCode.Shared.Extensions;
 
 var map = Input.ReadTable();
 

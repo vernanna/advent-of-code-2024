@@ -1,4 +1,5 @@
 using System.Text;
+using AdventOfCode.Shared.Extensions;
 
 namespace AdventOfCode.Shared;
 

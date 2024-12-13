@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace AdventOfCode.Shared;
+namespace AdventOfCode.Shared.Extensions;
 
 public static class StringExtensions
 {
@@ -62,17 +62,20 @@ public static class StringExtensions
     public static int GetInt(this string value) => int.Parse(value);
     public static double GetDouble(this string value) => double.Parse(value);
 
-    public static IEnumerable<int> GetInts(this string value, string separator) =>
-        value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(int.Parse);
+    public static IEnumerable<int> GetInts(this string value) =>
+        Regex.Matches(value, @"-?\d+").Select(m => int.Parse(m.Value));
 
-    public static IEnumerable<uint> GetUnsignedInts(this string value, string separator) =>
-        value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(uint.Parse);
+    public static IEnumerable<long> GetLongs(this string value) =>
+        Regex.Matches(value, @"-?\d+").Select(m => long.Parse(m.Value));
 
-    public static IEnumerable<long> GetLongs(this string value, string separator) =>
-        value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(long.Parse);
+    public static IEnumerable<ulong> GetULongs(this string value) =>
+        Regex.Matches(value, @"-?\d+").Select(m => ulong.Parse(m.Value));
 
-    public static IEnumerable<double> GetDoubles(this string value, string separator) =>
-        value.Split(separator).Where(part => !string.IsNullOrWhiteSpace(part)).Select(double.Parse);
+    public static IEnumerable<double> GetDoubles(this string value) =>
+        Regex.Matches(value, @"-?\d+(\.\d+)?").Select(m => double.Parse(m.Value));
+
+    public static IEnumerable<decimal> GetDecimals(this string value) =>
+        Regex.Matches(value, @"-?\d+(\.\d+)?").Select(m => decimal.Parse(m.Value));
 
     public static (string First, string Second) SplitAt(this string value, string separator)
     {

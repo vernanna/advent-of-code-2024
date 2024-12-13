@@ -1,4 +1,4 @@
-﻿using AdventOfCode.Shared;
+﻿using AdventOfCode.Shared.Extensions;
 
 namespace AdventOfCode.Day09._1;
 

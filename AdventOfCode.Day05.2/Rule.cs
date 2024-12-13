@@ -1,4 +1,4 @@
-﻿using AdventOfCode.Shared;
+﻿using AdventOfCode.Shared.Extensions;
 
 namespace AdventOfCode.Day05._2;
 
@@ -12,7 +12,7 @@ public record Rule(int FirstPageNumber, int SecondPageNumber)
 
     public static Rule Parse(string input)
     {
-        var numbers = input.GetInts("|").ToList();
+        var numbers = input.GetInts().ToList();
 
         return new Rule(numbers[0], numbers[1]);
     }

@@ -1,10 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using AdventOfCode.Shared;
+using AdventOfCode.Shared.Extensions;
 
 var result = Input
     .ReadLines()
-    .Select(line => line.GetInts(" ").ToList())
+    .Select(line => line.GetInts().ToList())
     .Count(
         levels => levels.Select(
                 (_, index) =>

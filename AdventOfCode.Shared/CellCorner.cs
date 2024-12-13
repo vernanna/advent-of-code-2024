@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode.Shared;
+﻿using AdventOfCode.Shared.Extensions;
+
+namespace AdventOfCode.Shared;
 
 public class CellCorner<T>(Cell<T>? diagonalCell, List<Cell<T>?> adjacentCells)
 {

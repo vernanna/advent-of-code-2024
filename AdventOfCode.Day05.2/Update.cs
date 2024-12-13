@@ -1,4 +1,4 @@
-﻿using AdventOfCode.Shared;
+﻿using AdventOfCode.Shared.Extensions;
 
 namespace AdventOfCode.Day05._2;
 
@@ -24,7 +24,7 @@ public record Update(List<int> PageNumbers)
 
     public static Update Parse(string input)
     {
-        var numbers = input.GetInts(",").ToList();
+        var numbers = input.GetInts().ToList();
 
         return new Update(numbers);
     }

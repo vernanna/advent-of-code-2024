@@ -2,9 +2,10 @@
 
 using AdventOfCode.Day11._1;
 using AdventOfCode.Shared;
+using AdventOfCode.Shared.Extensions;
 
 var stones = Input.ReadLines()
-    .SelectMany(line => line.GetLongs(" "))
+    .SelectMany(line => line.GetLongs())
     .Select(id => new Stone(id))
     .ToList();
 

@@ -1,9 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using AdventOfCode.Shared;
+using AdventOfCode.Shared.Extensions;
 
 var lines = Input.ReadLines()
-    .Select(line => line.GetInts(" ").ToList())
+    .Select(line => line.GetInts().ToList())
     .Select(numbersPerLine => (First: numbersPerLine[0], Second: numbersPerLine[1]))
     .ToList();
 

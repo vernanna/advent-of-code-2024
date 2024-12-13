@@ -2,6 +2,7 @@
 
 using System.Text.RegularExpressions;
 using AdventOfCode.Shared;
+using AdventOfCode.Shared.Extensions;
 
 var result = Input.ReadLines()
     .Join("")

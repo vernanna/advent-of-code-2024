@@ -1,4 +1,4 @@
-namespace AdventOfCode.Shared;
+namespace AdventOfCode.Shared.Extensions;
 
 public static class EnumerableExtensions
 {
@@ -92,4 +92,21 @@ public static class EnumerableExtensions
 
         return -1;
     }
+
+    public static ulong Sum(this IEnumerable<ulong> source)
+    {
+        ulong sum = 0;
+        foreach (var value in source)
+        {
+            checked
+            {
+                sum += value;
+            }
+        }
+
+        return sum;
+    }
+
+    public static ulong Sum<TSource>(this IEnumerable<TSource> source, Func<TSource, ulong> selector) =>
+        source.Select(selector).Sum();
 }

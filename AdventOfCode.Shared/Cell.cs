@@ -1,3 +1,5 @@
+using AdventOfCode.Shared.Extensions;
+
 namespace AdventOfCode.Shared;
 
 public class Cell<T>(T value, int row, int column, Table<T> table)

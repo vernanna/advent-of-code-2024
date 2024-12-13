@@ -1,4 +1,4 @@
-namespace AdventOfCode.Shared;
+namespace AdventOfCode.Shared.Extensions;
 
 public static class CharExtensions
 {
